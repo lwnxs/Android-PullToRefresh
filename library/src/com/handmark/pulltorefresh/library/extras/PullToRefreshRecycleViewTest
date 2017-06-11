@@ -1,0 +1,50 @@
+
+package com.handmark.pulltorefresh.library.extras;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
+//构造方法
+        public PullToRefreshRecyclerView(Context context) {
+        super(context);
+    }
+
+    public PullToRefreshRecyclerView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public PullToRefreshRecyclerView(Context context, Mode mode) {
+        super(context, mode);
+    }
+
+    public PullToRefreshRecyclerView(Context context, Mode mode, AnimationStyle animStyle) {
+        super(context, mode, animStyle);
+    }
+//滑动方向 垂直
+    @Override
+    public final Orientation getPullToRefreshScrollDirection() {
+        return Orientation.VERTICAL;
+    }
+// 内容
+    @Override
+    protected RecyclerView createRefreshableView(Context context, AttributeSet attrs) {
+        RecyclerView recyclerView = new RecyclerView(context, attrs);
+        return recyclerView;
+    }
+//底部，上拉刷新
+    @Override
+    protected boolean isReadyForPullEnd() {
+        //return isBottom(); 具体实现最后的Item刷新
+        return false;
+    }
+    //头部，下拉刷新
+    @Override
+    protected boolean isReadyForPullStart() {
+        //return isTop(); 具体实现刷新
+        return false;
+    }
+   
+    
+    
+    
+    }
